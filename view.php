@@ -6,4 +6,8 @@ if($row['pid']==''){
 	header('Location: ./');
 	exit;
 }
+echo '<div>';
+	echo '<h1>'.$row['pid'].'<h1>';
+	echo '<p>Posted on '.date('jS M Y', strtotime($row['pdate'])). '<p>';
+echo '</div>';
 ?>
