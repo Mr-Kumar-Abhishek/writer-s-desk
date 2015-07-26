@@ -17,3 +17,4 @@ function __autoload($class) {
 	// there should be better method for all levels
 	if(file_exists($classpath)) require_once($classpath);
 }
+$user-new User($db);
