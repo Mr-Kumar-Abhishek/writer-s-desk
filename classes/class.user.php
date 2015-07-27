@@ -12,3 +12,7 @@
 	public function encrypting($value) {
 		return $hash = crypt($value, 'muhuhahaha'.substr(str_replace('+', '.', base64_encode(sha1(microtime(true), true))), 0, 22));
 	}
+	//verifying encryption
+	public function verify_encryption($passwd, $hash){
+		return $hash == crypt($passwd, $hash); //returning boolean
+	}
