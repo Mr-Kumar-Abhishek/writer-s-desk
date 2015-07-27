@@ -16,3 +16,16 @@
 	private function verify_encryption($passwd, $hash){
 		return $hash == crypt($passwd, $hash); //returning boolean
 	}
+	// getting hashed passwd by passing uname to db
+	private function get_uhash($uname){
+		try {
+			$cm = $this->db->prepare('SELECT passwd FROM mem WHERE uname = :uname');
+			$cm->execute(array('uname' => $uname));
+			$row=$cm->fetch();
+			return $row['passwd'];
+		}catch(PDOException $e){
+			echo '<p class="error">'.$e->getMessage().'</p>';
+		}
+	}
+		}
+	}
