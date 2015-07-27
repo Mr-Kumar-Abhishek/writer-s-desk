@@ -8,4 +8,7 @@
 	public function is_signed_in() {
 		if(isset($_SESSION['signedin']) && $_SESSION['signedin'] == true) return true;
 	}
-	
+	//encryption for passwords
+	public function encrypting($value) {
+		return $hash = crypt($value, 'muhuhahaha'.substr(str_replace('+', '.', base64_encode(sha1(microtime(true), true))), 0, 22));
+	}
