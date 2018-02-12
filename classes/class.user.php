@@ -30,3 +30,16 @@
 	if($this->password_verify($password,$user['password']) == 1){
 		//match
 	}
+
+	public function login($username,$password){ 
+
+		$hashed = $this->get_user_hash($username);
+    
+		if($this->password_verify($password,$hashed) == 1){
+        
+			$_SESSION['loggedin'] = true;
+			$_SESSION['memberID'] = $user['memberID'];
+			$_SESSION['username'] = $user['username'];
+			return true;
+		}       
+	}
