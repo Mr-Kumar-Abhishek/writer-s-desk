@@ -13,7 +13,14 @@
 		header('Location: index.php?action=deleted');
 		exit;
 	} 
+	
+	
+	if(isset($_GET['action'])){ 
+		echo '<h3>Post '.$_GET['action'].'.</h3>'; 
+	} 
+
 ?>
+
 
 
 <table>
