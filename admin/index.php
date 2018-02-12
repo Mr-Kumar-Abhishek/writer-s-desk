@@ -28,8 +28,8 @@
             ?>
 
             <td>
-                <a href="edit-post.php?id=<?php echo $row['postID'];?>">Edit</a> | 
-                <a href="javascript:delpost('<?php echo $row['postID'];?>','<?php echo $row['postTitle'];?>')">Delete</a>
+                <a href="edit-post.php?id=<?php echo $row['post_id'];?>">Edit</a> | 
+                <a href="javascript:delpost('<?php echo $row['post_id'];?>','<?php echo $row['postTitle'];?>')">Delete</a>
             </td>
             
             <?php 
