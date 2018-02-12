@@ -26,3 +26,7 @@
 			echo '<p class="error">'.$e->getMessage().'</p>';
 		}
 	}
+
+	if($this->password_verify($password,$user['password']) == 1){
+		//match
+	}
