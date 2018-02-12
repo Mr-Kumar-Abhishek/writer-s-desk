@@ -5,7 +5,14 @@
 	//if not logged in redirect to login page
 	if(!$user->is_logged_in()){ header('Location: login.php'); }
 	
-	
+	if(isset($_GET['delpost'])){ 
+		
+		$stmt = $db->prepare('DELETE FROM blog_posts WHERE postID = :postID') ;
+		$stmt->execute(array(':postID' => $_GET['delpost']));
+
+		header('Location: index.php?action=deleted');
+		exit;
+	} 
 ?>
 
 
