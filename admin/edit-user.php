@@ -30,6 +30,33 @@
 		}
 
 	}
+	
+	
+	if(isset($password)){
+
+			$hashedpassword = $user->create_hash($password);
+
+			//update into database
+			$stmt = $db->prepare('UPDATE blog_members SET username = :username, password = :password, email = :email WHERE memberID = :memberID') ;
+			$stmt->execute(array(
+				':username' => $username,
+				':password' => $hashedpassword,
+				':email' => $email,
+				':memberID' => $memberID
+			));
+
+
+			} else {
+
+				//update database
+				$stmt = $db->prepare('UPDATE blog_members SET username = :username, email = :email WHERE memberID = :memberID') ;
+				$stmt->execute(array(
+					':username' => $username,
+					':email' => $email,
+					':memberID' => $memberID
+				));
+
+			}
 ?>
 
 
