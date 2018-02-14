@@ -28,6 +28,30 @@
 		if($postCont ==''){
 			$error[] = 'Please enter the content.';
 		}
+		
+	
+		if(!isset($error)){
+
+			try {
+
+				//insert into database
+				$stmt = $db->prepare('INSERT INTO blog_posts (postTitle,postDesc,postCont,postDate) VALUES (:postTitle, :postDesc, :postCont, :postDate)') ;
+				$stmt->execute(array(
+					':postTitle' => $postTitle,
+					':postDesc' => $postDesc,
+					':postCont' => $postCont,
+					':postDate' => date('Y-m-d H:i:s')
+				));
+
+				//redirect to index page
+				header('Location: index.php?action=added');
+				exit;
+	
+			} catch(PDOException $e) {
+				echo $e->getMessage();
+			}
+
+		}
 ?>
 
 
