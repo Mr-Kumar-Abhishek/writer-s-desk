@@ -14,6 +14,22 @@
     } catch(PDOException $e) {
         echo $e->getMessage();
     }
+    
+    if( strlen($password) > 0){
+
+		if($password ==''){
+			$error[] = 'Please enter the password.';
+		}
+
+		if($passwordConfirm ==''){
+			$error[] = 'Please confirm the password.';
+		}
+
+		if($password != $passwordConfirm){
+			$error[] = 'Passwords do not match.';
+		}
+
+	}
 ?>
 
 
