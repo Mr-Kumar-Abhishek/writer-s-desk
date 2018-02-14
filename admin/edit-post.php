@@ -41,7 +41,27 @@
 		}
 	}
 	
+	if(!isset($error)){
+		try {
 
+			//insert into database
+			$stmt = $db->prepare('UPDATE blog_posts SET postTitle = :postTitle, postDesc = :postDesc, postCont = :postCont WHERE postID = :postID') ;
+			$stmt->execute(array(
+				':postTitle' => $postTitle,
+				':postDesc' => $postDesc,
+				':postCont' => $postCont,
+				':postID' => $postID
+			));
+
+			//redirect to index page
+			header('Location: index.php?action=updated');
+			exit;
+
+		} catch(PDOException $e) {
+			echo $e->getMessage();
+		}
+	
+	}
 ?>
 
 
