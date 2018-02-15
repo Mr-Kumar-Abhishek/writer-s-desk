@@ -8,7 +8,7 @@
 	
 	
 	// if post does not exist redirect user.
-	if($row['post_id'] == ''){
+	if($row['postID'] == ''){
 		header('Location: ./');
 		exit;
 	}
