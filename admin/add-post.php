@@ -1,7 +1,5 @@
 
-<?php 
-
-//include config
+<?php //include config
 require_once('../includes/config.php');
 //if not logged in redirect to login page
 if(!$user->is_logged_in()){ header('Location: login.php'); }
@@ -13,7 +11,6 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
   <title>Admin - Add Post</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
   <link rel="stylesheet" href="../style/main.css">
-  <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
 </head>
 <body>
 
@@ -82,6 +79,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 	</form>
 
 </div>
+  <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
   <script>
           tinymce.init({
               selector: "textarea",
