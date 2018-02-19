@@ -1,6 +1,7 @@
 <IfModule mod_rewrite.c>
+
 RewriteEngine On
-RewriteBase /writer-s-desk/
+RewriteBase /
 
 RewriteCond %{REQUEST_FILENAME} !-d [NC]
 RewriteCond %{REQUEST_FILENAME} !-f [NC]
