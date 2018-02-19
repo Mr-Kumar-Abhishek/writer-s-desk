@@ -5,7 +5,7 @@ require_once('../includes/config.php');
 if(!$user->is_logged_in()){ header('Location: login.php'); }
 //show message from add / edit page
 if(isset($_GET['delpost'])){ 
-	$stmt = $db->prepare('DELETE FROM blog_posts WHERE postID = :postID') ;
+	$stmt = $db->prepare('DELETE FROM blog_posts_seo WHERE postID = :postID') ;
 	$stmt->execute(array(':postID' => $_GET['delpost']));
 	header('Location: index.php?action=deleted');
 	exit;
@@ -18,6 +18,7 @@ if(isset($_GET['delpost'])){
   <title>Admin</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
   <link rel="stylesheet" href="../style/main.css">
+
 </head>
 <body>
 
@@ -40,7 +41,7 @@ if(isset($_GET['delpost'])){
 	</tr>
 	<?php
 		try {
-			$stmt = $db->query('SELECT postID, postTitle, postDate FROM blog_posts ORDER BY postID DESC');
+			$stmt = $db->query('SELECT postID, postTitle, postDate FROM blog_posts_seo ORDER BY postID DESC');
 			while($row = $stmt->fetch()){
 				
 				echo '<tr>';
@@ -66,10 +67,8 @@ if(isset($_GET['delpost'])){
 
 </div>
   <script language="JavaScript" type="text/javascript">
-  function delpost(id, title)
-  {
-	  if (confirm("Are you sure you want to delete '" + title + "'"))
-	  {
+  function delpost(id, title){
+	  if (confirm("Are you sure you want to delete '" + title + "'")){
 	  	window.location.href = 'index.php?delpost=' + id;
 	  }
   }
