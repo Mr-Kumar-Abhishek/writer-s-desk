@@ -46,18 +46,28 @@ mysql> source db.sql
 
 
 
-* go to `.htaccess` file and edit the following line to your blog's base URL.
+* Go to `.htaccess` file and edit the following line to your blog's base URL.
 
 ```
 RewriteBase /writer_s_desk/
 ```
 
-Say if the blog's URL is `http://your-website-address.com/blog/`
-
-you have to change that line to:
+Say if the blog's URL is `http://your-website-address.com/blog/` you have to change that line to:
 
 ```
 RewriteBase /blog/
+```
+
+* Edit the file `includes/config.php` to put proper database credentials
+
+```
+//database credentials
+define('DBHOST','localhost'); // database name
+define('DBUSER','demo'); // database user
+define('DBPASS','demo'); // database password
+define('DBNAME','writer_s_desk'); // database name
+define('DBPORT', '8889'); // database port either 8889 or 3306
+
 ```
 
 
@@ -67,4 +77,5 @@ RewriteBase /blog/
 > Username: demo
 > Password: demo
 
-With this you could create edit or delete blog posts. Also if you want new users, you could add them too from this admin panel.
+With this you could create edit or delete blog posts. Also if you want new users, you could add them too from 
+this admin panel.
