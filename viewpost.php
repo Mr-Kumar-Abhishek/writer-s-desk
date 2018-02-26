@@ -20,18 +20,31 @@ if($row['postID'] == ''){
 
 	<div id="wrapper">
 
-		<h1>Blog</h1>
-		<hr />
-		<p><a href="./">Blog Index</a></p>
+			<h1>Blog</h1>
+			<hr />
+			<p><a href="./">Blog Index</a></p>
 
 
-		<?php	
-			echo '<div>';
-				echo '<h1>'.$row['postTitle'].'</h1>';
-				echo '<p>Posted on '.date('jS M Y', strtotime($row['postDate'])).'</p>';
-				echo '<p>'.$row['postCont'].'</p>';				
-			echo '</div>';
-		?>		
+			<?php	
+				echo '<div>';
+					echo '<h1>'.$row['postTitle'].'</h1>';
+					echo '<p>Posted on '.date('jS M Y H:i:s', strtotime($row['postDate'])).' in ';
+						$stmt2 = $db->prepare('SELECT catTitle, catSlug	FROM blog_cats, blog_post_cats WHERE blog_cats.catID = blog_post_cats.catID AND blog_post_cats.postID = :postID');
+						$stmt2->execute(array(':postID' => $row['postID']));
+						$catRow = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+						$links = array();
+						foreach ($catRow as $cat)
+						{
+							$links[] = "<a href='c-".$cat['catSlug']."'>".$cat['catTitle']."</a>";
+						}
+						echo implode(", ", $links);
+					echo '</p>';
+					echo '<p>'.$row['postCont'].'</p>';				
+				echo '</div>';
+			?>
+
+		</div>
+	
 		<div id='disqus_thread'></div>
 	</div>
 	<script type='text/javascript'>
